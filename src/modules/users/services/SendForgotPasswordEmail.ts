@@ -43,5 +43,3 @@ export class SendForgotPasswordEmail {
     });
   }
 }
-
-//teste github
