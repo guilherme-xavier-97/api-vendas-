@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
-import { Create } from '../services/Create';
 import ShowProfile from '../services/ShowProfile';
 import UpdateProfile from '../services/UpdateProfile';
 
 export default class ProfileController {
-  public async shiw(request: Request, response: Response): Promise<Response> {
+  public async show(request: Request, response: Response): Promise<Response> {
     const showProfile = new ShowProfile();
     const user_id = request.user.id;
 
