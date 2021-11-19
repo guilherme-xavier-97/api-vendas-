@@ -4,7 +4,7 @@ import User from '../typeorm/entities/User';
 import { UsersRepository } from '../typeorm/repositories/UsersRepository';
 
 interface IRequest {
-  id: number;
+  id: string;
 }
 export class ReadOne {
   public async execute({ id }: IRequest): Promise<User | undefined> {
