@@ -1,5 +1,9 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, In, Repository } from 'typeorm';
 import Product from '../entities/Product';
+
+interface IFindProducts {
+  id: string;
+}
 
 @EntityRepository(Product)
 export class ProductsRepository extends Repository<Product> {
@@ -10,5 +14,15 @@ export class ProductsRepository extends Repository<Product> {
       },
     });
     return product;
+  }
+
+  public async findAllProducts(products: IFindProducts[]): Promise<Product[]> {
+    //can map the entity and callback just what you want, in this case, the id
+    const productsIds = await products.map(product => product.id);
+
+    const productsExists = await this.find({
+      id: In(productsIds),
+    });
+    return productsExists;
   }
 }

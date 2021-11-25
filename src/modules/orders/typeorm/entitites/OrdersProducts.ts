@@ -41,6 +41,12 @@ class OrdersProducts {
   @ManyToOne(() => Product, product => product.order_products)
   @JoinColumn({ name: 'id' })
   product: Product;
+
+  @Column()
+  order_id: string;
+
+  @Column()
+  product_id: string;
 }
 
 export default OrdersProducts;
