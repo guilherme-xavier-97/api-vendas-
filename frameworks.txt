@@ -1,0 +1,28 @@
+Este arquivo é só pra ter noção dos frameworks/bibliotecas que utilizei durante o projeto e
+uma breve explicação de pra que servem.
+
+*Express
+
+---------------------------------------------------------------------------------------------------------
+
+*Multer
+
+---------------------------------------------------------------------------------------------------------
+
+*Dotenv:
+  É uma biblioteca utilizada para criar variáveis de ambiente. É muito útil para salvar arquivos sensiveis
+  da aplicação, como senhas para acesso a banco de dados, login de root, etc. Imagina se vc publica
+  essas informações no seu github? Fica fácil pra alguém pegar e fazer mau uso, então é mais fácil
+  utilizar variáveis de ambiente isso, estrão em um arquivo que não sobre pro GitHub, fica localmente.
+  No GitHub vc só vai informar que existe a variável X, mas não informa o valor.
+  https://github.com/motdotla/dotenv
+---------------------------------------------------------------------------------------------------------
+*ioredis:
+  É uma biblioteca do Redis que trabalha com cache, por meio do conceito de chave-valor
+  ,ou seja, ele é um banco de dados que armazena informações em cache
+  aquelas que o navegador meio que deixa salvo pra você, pra nao ficar preenchendo tudo de uma vez. Quando
+  a sessão é encerrada, os dados também são perdidos. Por exemplo o carrinho de compras de umas loja.
+  https://github.com/luin/ioredis
+  ---------------------------------------------------------------------------------------------------------
+
+
