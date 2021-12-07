@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import { UsersRepository } from '../typeorm/repositories/UsersRepository';
-import { UserTokensRepository } from '../typeorm/repositories/UserTokensRepository';
+import UsersRepository from '../typeorm/repositories/UsersRepository';
+import UserTokensRepository from '../typeorm/repositories/UserTokensRepository';
 
 //This library compares date datas, like, after 1 hour, what i do? befere 2 hours, what will work?
 import { isAfter, addHours } from 'date-fns';

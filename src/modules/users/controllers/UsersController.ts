@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Create } from '../services/Create';
+import Create from '../services/Create';
 import Read from '../services/Read';
 
 //import { ReadOne } from '../services/ReadOne';
@@ -7,6 +7,7 @@ import Read from '../services/Read';
 export default class UsersController {
   public async index(request: Request, response: Response): Promise<Response> {
     const listUsers = new Read();
+    // eslint-disable-next-line no-console
     console.log(request.user.id);
 
     const user = await listUsers.execute();
