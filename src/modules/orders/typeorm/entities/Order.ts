@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import Customer from '@modules/customers/typeorm/entities/Customers';
 import OrdersProducts from './OrdersProducts';
@@ -15,6 +16,7 @@ class Order {
   id: string;
 
   @ManyToOne(() => Customer, customer => customer.id)
+  @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.order, {

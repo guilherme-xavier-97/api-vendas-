@@ -5,9 +5,15 @@
 
   -precisa colocar -- -n <nome da migration> se nao colocar os "--" nao da certo, a sintaxe é assim
 */
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateOrders1637350127473 implements MigrationInterface {
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
+
+export default class CreateOrders1638886590457 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -30,11 +36,31 @@ export class CreateOrders1637350127473 implements MigrationInterface {
             type: 'timestamp with time zone',
             default: 'now()',
           },
+          {
+            name: 'customer_id',
+            type: 'uuid',
+            /*Why a primary key can be null? Because if a customer is deleted from  customers database,
+            your data will continous in orders database, to know who did that order, even if he dont
+            exist anymore   */
+            isNullable: true,
+          },
         ],
+      }),
+    );
+
+    await queryRunner.createForeignKey(
+      'orders',
+      new TableForeignKey({
+        name: 'OrdersCustomer',
+        columnNames: ['customer_id'],
+        referencedTableName: 'customers',
+        referencedColumnNames: ['id'],
+        onDelete: 'SET NULL',
       }),
     );
   }
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('orders', 'OrdersCustomer');
     await queryRunner.dropTable('orders');
   }
 }

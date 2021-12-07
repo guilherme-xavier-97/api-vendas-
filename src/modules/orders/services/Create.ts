@@ -44,7 +44,10 @@ class Create {
     );
 
     if (checkInexistentsProducts.length) {
-      throw new AppError('O produto fgss não foi encontrado', 400);
+      throw new AppError(
+        `O Produto ${checkInexistentsProducts[0].id} não foi encontrado`,
+        400,
+      );
     }
 
     /**
