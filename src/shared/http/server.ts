@@ -8,11 +8,14 @@ import 'reflect-metadata';
 import '@shared/typeorm';
 import { errors } from 'celebrate';
 import uploadConfig from '@config/upload';
+/*This library allow to us separate the files in different pages. Like 5, 10, 15 register per page and
+then you click "next" to change the page or "previous" to go back */
+import { pagination } from 'typeorm-pagination';
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
+app.use(pagination);
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
 
