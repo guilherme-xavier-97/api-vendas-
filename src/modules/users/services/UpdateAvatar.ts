@@ -3,11 +3,11 @@ import fs from 'fs'; //biblioteca nariva do node para trabalhar com manipulaçã
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import uploadConfig from '@config/upload';
-import { UsersRepository } from '../typeorm/repositories/UsersRepository';
+import UsersRepository from '../typeorm/repositories/UsersRepository';
 import path from 'path';
 
 interface IRequest {
-  UserId: number;
+  UserId: string;
   AvatarFilename?: string;
 }
 export default class UpdateAvatar {
