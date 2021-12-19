@@ -44,7 +44,9 @@
     "multer": "^1.4.3",
     "nodemailer": "^6.7.0",
     "pg": "^8.7.1",
-    "redis": "^3.1.2",
+    "rate-limiter-flexible": "^2.3.6",
+    "redis": "^4.0.1",
+    "redis-server": "^1.2.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.37",
     "typeorm-pagination": "^2.0.3"

@@ -25,4 +25,10 @@ uma breve explicação de pra que servem.
   https://github.com/luin/ioredis
   ---------------------------------------------------------------------------------------------------------
 
+*Rate Limiter:
+  É uma biblioteca que funciona como middleware para impedir ataques de "força bruta", ou seja, alguém
+  tentar derrubar o servidor com muias requisiçõesao mesmo tempo. O Rate vai bloquear as requisições
+  de acordo com os parametros que vc passa.
+
+  ------------------------------------------------------------------------------------------------------
 
