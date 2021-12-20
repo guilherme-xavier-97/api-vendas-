@@ -1,4 +1,4 @@
-import RedisCache from '@shared/cache/RedisCache';
+import redisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Product from '../typeorm/entities/Product';
@@ -30,7 +30,7 @@ class Update {
       throw new AppError('Produto já cadastrado', 400);
     }
 
-    const redisCache = new RedisCache();
+    //const redisCache = new RedisCache();
 
     product.name = name;
     product.price = price;
