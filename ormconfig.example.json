@@ -6,12 +6,12 @@
   "password": "root",
   "database": "apivendas",
   "entities": [
-    "dist/modules/**/typeorm/entities/*.js"
+    "src/modules/**/typeorm/entities/*.ts"
  ],
  "migrations": [
-    "dist/shared/typeorm/migrations/*.js"
+    "src/shared/typeorm/migrations/*.ts"
  ],
  "cli": {
-    "migrationsDir": "dist/shared/typeorm/migrations"
+    "migrationsDir": "src/shared/typeorm/migrations"
  }
 }
