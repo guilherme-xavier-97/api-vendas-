@@ -1,17 +1,11 @@
-/*
-  DICA IMPORTANTE PRAS MIGRATIONS:
-  -migration: generate serve pra alterar os campos, seria tipo um "alter table"
-  depois que vc faz o generate precisa dar o migration:run pra "confirmar" a mudança!
-
-  -precisa colocar -- -n <nome da migration> se nao colocar os "--" nao da certo, a sintaxe é assim
-*/
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateOrders1637350127473 implements MigrationInterface {
+export class CreateProducts1640908134321 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
       new Table({
-        name: 'orders',
+        name: 'products',
         columns: [
           {
             name: 'id',
@@ -21,20 +15,35 @@ export class CreateOrders1637350127473 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'name',
+            type: 'varchar',
+          },
+          {
+            name: 'price',
+            type: 'decimal',
+            precision: 10,
+            scale: 2,
+          },
+          {
+            name: 'quantity',
+            type: 'int',
+          },
+          {
             name: 'created_at',
-            type: 'timestamp with time zone',
+            type: 'timestamp',
             default: 'now()',
           },
           {
             name: 'updated_at',
-            type: 'timestamp with time zone',
+            type: 'timestamp',
             default: 'now()',
           },
         ],
       }),
     );
   }
+
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('orders');
+    await queryRunner.dropTable('products');
   }
 }

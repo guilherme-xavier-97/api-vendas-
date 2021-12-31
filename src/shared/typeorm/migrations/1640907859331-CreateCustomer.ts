@@ -1,10 +1,16 @@
+/*
+  Ao criar uma migration, precisa colocar -- -n <nome da migration>
+  se nao colocar os "--" nao da certo, a sintaxe é assim
+*/
+
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateOrdersProducts1637852491956 implements MigrationInterface {
+export class CreateCustomer1640907859331 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
       new Table({
-        name: 'orders_products',
+        name: 'customers',
         columns: [
           {
             name: 'id',
@@ -14,14 +20,12 @@ export class CreateOrdersProducts1637852491956 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'price',
-            type: 'decimal',
-            precision: 10,
-            scale: 2,
+            name: 'name',
+            type: 'varchar',
           },
           {
-            name: 'quantity',
-            type: 'int',
+            name: 'email',
+            type: 'varchar',
           },
           {
             name: 'created_at',
@@ -39,6 +43,6 @@ export class CreateOrdersProducts1637852491956 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('orders_products');
+    await queryRunner.dropTable('customers');
   }
 }
